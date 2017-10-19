@@ -18,7 +18,7 @@ konanInterop {
         defFile gradle.startParameter.projectProperties.defFile
         target targetName
         noDefaultLibs true
-        extraOpts libraries.collectMany { ["-library",  "$konanHome/klib/$targetName/$it"] }
+        extraOpts libraries.collectMany { ["-library",  "$konanHome/klib/platform/$targetName/$it"] }
     }
 }
 
@@ -26,7 +26,7 @@ def suffix = gradle.startParameter.projectProperties['suffix']
 def klibProgram = suffix?"$konanHome/bin/klib.$suffix" : "$konanHome/bin/klib"
 
 task klibInstall(type:Exec) {
-    String repo = "$konanHome/klib/$targetName"
+    String repo = "$konanHome/klib/platform/$targetName"
     doFirst {
         new File(repo).mkdirs()
     }
